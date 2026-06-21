@@ -23,7 +23,7 @@ app.use(cors({
 const upload = multer({ storage: multer.memoryStorage() });
 
 app.get("/", (req, res) => {
-  res.send("Job Board API is running");
+  res.send("Job Board API is running - Deployed via CI/CD!");
 });
 
 // Register a new user
