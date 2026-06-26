@@ -4,7 +4,7 @@ A production-grade REST API for a full-stack job board application. Built with N
 
 ## Live Demo
 
-Frontend: [https://jobboard-frontend-alpha.vercel.app](https://jobboard-frontend-alpha.vercel.app)
+Frontend: [https://thetalentboard.vercel.app](https://thetalentboard.vercel.app)
 API Base URL: [https://52-87-172-34.sslip.io](https://52-87-172-34.sslip.io)
 
 ## Tech Stack
@@ -70,8 +70,8 @@ GET  /applications    Get current user's applications (authenticated)
 
 ```bash
 # Clone the repo
-git clone https://github.com/sadeepabandara/jobboard-backend.git
-cd jobboard-backend
+git clone https://github.com/sadeepabandara/talentboard-backend.git
+cd talentboard-backend
 
 # Install dependencies
 npm install
@@ -102,14 +102,14 @@ S3_BUCKET_NAME=your_bucket
 
 ```bash
 # Build the image
-docker build -t jobboard-backend .
+docker build -t talentboard-backend .
 
 # Run the container
 docker run -d -p 4000:4000 \
   -e DATABASE_URL=... \
   -e JWT_SECRET=... \
-  --name jobboard \
-  jobboard-backend
+  --name talentboard \
+  talentboard-backend
 ```
 
 ## CI/CD Pipeline

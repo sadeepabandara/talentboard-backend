@@ -24,7 +24,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/jobboard-backend:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/talentboard-backend:latest
 
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v1.0.3
@@ -33,9 +33,9 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/jobboard-backend:latest
-            sudo docker stop jobboard || true
-            sudo docker rm jobboard || true
+            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/talentboard-backend:latest
+            sudo docker stop talentboard || true
+            sudo docker rm talentboard || true
             sudo docker run -d \
               -p 4000:4000 \
               -e DATABASE_URL="${{ secrets.DATABASE_URL }}" \
@@ -44,5 +44,5 @@ jobs:
               -e AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}" \
               -e AWS_REGION="us-east-1" \
               -e S3_BUCKET_NAME="jobboard-resumes-alpha" \
-              --name jobboard \
-              ${{ secrets.DOCKERHUB_USERNAME }}/jobboard-backend:latest
+              --name talentboard \
+              ${{ secrets.DOCKERHUB_USERNAME }}/talentboard-backend:latest
